@@ -1,9 +1,9 @@
 import json
-import logging
+from logger import create_logger
 from json import JSONDecodeError
+logger = create_logger()
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
-logger = logging.getLogger('basiq')
 
 
 def load_data():
@@ -13,6 +13,7 @@ def load_data():
             data = json.load(f)
             return data
     except(FileNotFoundError, JSONDecodeError):
+        logger.error("Не удается получить данные из data.json")
         return "Не удается получить данные из data.json"
 
 
@@ -52,3 +53,4 @@ def is_filename_allowed(filename):
     if extension in ALLOWED_EXTENSIONS:
         return True
     return False
+

@@ -1,10 +1,8 @@
 from flask import Flask
-import logging
 
 from main.views import main_blueprint
 from loader.views import loader_blueprint
 
-logger = logging.getLogger("basiq")
 
 app = Flask(__name__)
 app.register_blueprint(main_blueprint)

@@ -2,7 +2,7 @@ import logging
 
 
 def create_logger():
-    logger = logging.getLogger("basiq")
+    logger = logging.getLogger(__name__)
     logger.setLevel("INFO")
 
     file_handler = logging.FileHandler('logs/basiq.txt', encoding='utf-8')
@@ -13,3 +13,5 @@ def create_logger():
     loger_formate = logging.Formatter("%(asctime)s [%(levelname)s] %(message)s")
     file_handler.setFormatter(loger_formate)
     console_handler.setFormatter(loger_formate)
+
+    return logger
